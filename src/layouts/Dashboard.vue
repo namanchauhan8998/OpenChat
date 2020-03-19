@@ -62,4 +62,7 @@
   .rounded-drawer{
     border-radius: 0 0 18px 0;
   }
+  .some-class{
+    color:blue;
+  }
 </style>
