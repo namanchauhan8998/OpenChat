@@ -6,6 +6,7 @@
       v-model="drawer"
       show-if-above
       :mini="true"
+
       content-class="bg-primary text-white  rounded-drawer"
     >
       <q-scroll-area class="fit" >

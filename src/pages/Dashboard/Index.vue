@@ -4,7 +4,7 @@
       <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 bg-grey-1 shadow-12  absolute-center  " style="min-height: 95%; ">
         <div class="row justify-center">
           <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 absolute-center ">
-            <h1>Hello</h1>
+                <h3>Hello Form Home</h3>
           </div>
         </div>
       </div>

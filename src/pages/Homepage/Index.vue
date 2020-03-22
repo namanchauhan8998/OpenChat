@@ -1,7 +1,8 @@
 <template>
-  <q-page :style-fn="myTweak" >
+  <q-page :style-fn="myTweak" style="background-image: linear-gradient(to bottom right,#1976D2, #FFFDE4);">
+
     <div class="row justify-center" >
-      <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 bg-grey-1 shadow-12  absolute-center  " style="min-height: 80%; ">
+      <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10  shadow-23 absolute-center  " style="min-height: 80%; border-radius: 18px; ">
         <div class="row justify-center">
           <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 absolute-center ">
               <login></login>
