@@ -37,7 +37,8 @@
       return {
         newAccount:[
           {firstName:'',lable:'First Name',hint:'First Name'},
-          {LastName: '',lable:'Last Name ',hint:'Last Name'},
+          {lastName: '',lable:'Last Name ',hint:'Last Name'},
+          {username:'',lable:'User Name',hint:'User Name'},
           {email:'',lable:'Email Id ',hint:'Email Id'},
           {password:'',lable:'Password',hint:'Password'},
         ],
