@@ -22,26 +22,26 @@
       </q-scroll-area>
     </q-drawer>
 
-
-
     <q-page-container>
       <div class="row">
-        <div v-if="$q.screen.width>1024" class="col-md-3 col-lg-2 bg-grey-1  q-pl-md" style="height: 100vh;">{{$q.screen.width}} and {{$q.screen.name}}</div>
-        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-10">
+        <LeftDrawer></LeftDrawer>
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
           <router-view />
         </div>
         <q-page-sticky position="bottom-right" :offset="[18, 18]">
           <q-btn fab icon="add" color="primary" />
         </q-page-sticky>
       </div>
-
     </q-page-container>
 
   </q-layout>
 </template>
 
 <script>
+  import LeftDrawCard from "../components/DashboardComp/leftDrawCard";
+  import LeftDrawer from "./LeftDrawer";
   export default {
+    components: {LeftDrawer, LeftDrawCard},
     data () {
       return {
         drawer: true,
