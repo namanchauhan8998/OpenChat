@@ -1,18 +1,33 @@
 <template>
-    <q-page class="" style="background-color: #EBEDEE" >
-      <div class="row justify-center" style="height: 100vh; width: 100ch" >
-       <div class="bg-yellow self-center col-xs-12 col-xs-12 col-md-10 col-xl-10" style="width: 80%">
-                <h2>{{header}}</h2>
-         <p>{{text}}</p>
-       </div>
+  <q-page :style-fn="myTweak" >
+    <div class="row justify-center" >
+      <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 bg-grey-1 shadow-12  absolute-center  " style="min-height: 95%; ">
+        <div class="row justify-center">
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 absolute-center ">
+            <h1>Hello</h1>
+          </div>
+        </div>
       </div>
-    </q-page>
+    </div>
+  </q-page>
+
 
 </template>
 
 <script>
     export default {
         name: "Index",
+      methods:{
+        myTweak (offset) {
+          // "offset" is a Number (pixels) that refers to the total
+          // height of header + footer that occupies on screen,
+          // based on the QLayout "view" prop configuration
+
+          // this is actually what the default style-fn does in Quasar
+          return { minHeight: offset ? `calc(100vh - ${offset}px)` : '100vh',
+          }
+        }
+      },
       data(){
           return{
             header:'About BBPS ',
