@@ -1,8 +1,7 @@
 <template>
-  <q-page :style-fn="myTweak" style="background-image: linear-gradient(to bottom right,#1976D2, #FFFDE4);">
-
+  <q-page class="bg" :style-fn="myTweak" >
     <div class="row justify-center" >
-      <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10  shadow-23 absolute-center  " style="min-height: 80%; border-radius: 18px; ">
+      <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10  shadow-23 absolute-center bg-card">
         <div class="row justify-center">
           <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 absolute-center ">
               <login></login>
@@ -30,41 +29,13 @@
 
       }
     },
+    created(){
+
+    },
     methods:{
-      authentication:function(){
-        if(this.emailId=='naman'&& this.password=='naman'){
-          this.$router.push('/home')
-        }
-        // else this.to='Error404'
-        // let vm=this;
-        // let body={
-        //   email:vm.emailId,
-        //   password: vm.password
-        // }
-        //
-        // this.$axios({
-        //   method: 'post',
-        //   url: 'https://boardinf.herokuapp.com/users/login',
-        //   data: body
-        // }).then(value => {
-        //   vm.passed=true;
-        //   vm.$router.push('/');
-        //     }).catch((err)=>{
-        //   vm.$q.dialog({
-        //     title: 'Error',
-        //     message: 'Wrong ID'
-        //   })
-        // })
 
-      },
-      myTweak (offset) {
-        // "offset" is a Number (pixels) that refers to the total
-        // height of header + footer that occupies on screen,
-        // based on the QLayout "view" prop configuration
-
-        // this is actually what the default style-fn does in Quasar
-        return { minHeight: offset ? `calc(100vh - ${offset}px)` : '100vh',
-           }
+      myTweak (offset){
+        return { minHeight: offset ? `calc(100vh - ${offset}px)` : '100vh',}
       }
     },
     computed:{
@@ -79,5 +50,10 @@
   }
 </script>
 <style>
-
+.bg{
+  background-image: linear-gradient(to bottom right,#1976D2, #FFFDE4);
+}
+.bg-card{
+  min-height: 80%; border-radius: 18px;
+}
 </style>

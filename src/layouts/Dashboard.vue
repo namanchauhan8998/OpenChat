@@ -54,6 +54,10 @@
           {title:'Settings',icon:'settings',to:'/settings'}
         ]
       }
+    },
+    created() {
+
+      //form socket connection here somehow
     }
   }
 </script>
