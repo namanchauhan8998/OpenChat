@@ -1,6 +1,5 @@
 <template>
-  <div class="">
-    <q-layout view="rHh Lpr lff"  class="shadow-6 rounded-borders">
+  <q-layout   class="shadow-6 rounded-borders">
       <q-header elevated class="row" elevated bordered >
         <q-toolbar class="col ">
           <q-toolbar-title class="q-dialog__title">Header</q-toolbar-title>
@@ -34,7 +33,7 @@
         <router-view/>
       </q-page-container>
     </q-layout>
-  </div>
+
 </template>
 <script>
   export default {

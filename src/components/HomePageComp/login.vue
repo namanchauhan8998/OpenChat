@@ -33,12 +33,17 @@
     },
     methods:{
       login(){
-        this.$router.push('/home')
-        /**uncomment this later**/
-        //if(this.email==='' || this.password==='') console.log('Username and or Password cannot be empty'); else
-         ApiRepository
+        let vm = this;
+        ApiRepository
           .login(this.email,this.password)
-          .then(res=>{console.log(res)})
+          .then(res=>{
+            if(res.status===200){
+              localStorage.setItem('token',res.data.token);
+              vm.$router.push('/home')
+            }
+            else throw new Error('do something with cases in login');
+            console.log(res)
+          })
           .catch(err=>{console.log(err)});
       }
     }
