@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="loading" class="absolute-center text-center">
+    <div v-if="loading && !error" class="absolute-center text-center">
       <div class="text-h6">Connecting to the server...</div>
       <q-circular-progress
         indeterminate
@@ -8,6 +8,12 @@
         color="primary"
         class="q-ma-md"
       />
+
+    </div>
+    <div v-else-if="error" class="absolute-center text-center">
+      <div class="text-h6">Authentication Error...</div>
+      <q-btn label="Go Back" color="primary" to="/"/>
+
     </div>
     <q-layout v-else view="hHh lpR fFf">
 
@@ -39,9 +45,6 @@
           <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
             <router-view  :myProps="myProps"></router-view>
           </div>
-          <q-page-sticky position="bottom-right" :offset="[18, 18]">
-            <q-btn fab icon="add" color="primary" />
-          </q-page-sticky>
         </div>
       </q-page-container>
 
@@ -57,11 +60,12 @@
     components: {LeftDrawer, LeftDrawCard},
     data () {
       return {
-        loading:'true',
+        loading:true,
+        error:false,
         socket:{},
         drawer: true,
         miniState:true,
-        token:'arjun',
+        token:null,
         drawerItems:[
           {title:'Home',icon:'home',to:'/home',callback:false},
           {title:'Messages',icon:'message',to:'/message',callback:false},
@@ -77,7 +81,12 @@
     created() {
       let vm = this;
       this.token = localStorage.getItem('token');
+      console.log('token',this.token)
+      if(this.token==null){
+        this.error = true;
+      }
       let socket = io(`http://localhost:3000?token=${this.token}`);
+
       socket.on('connect',()=>{console.log('connected to server');vm.loading = false});
 
       this.socket = socket;

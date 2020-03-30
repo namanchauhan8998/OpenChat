@@ -8,7 +8,6 @@ const routes = [
       { path: '/create-account', component: () => import('pages/Homepage/CreateAccount.vue') },
     ]
   },
-  { path: '/whatsapp', component: () => import('pages/Dashboard/whatsAppChat.vue') },
   {
     path: '/home',
     component: () => import('layouts/Dashboard.vue'),
