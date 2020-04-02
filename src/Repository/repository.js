@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-const endPoint = 'http://localhost:3000';
+  const endPoint = 'http://localhost:3000';
 
 
 
@@ -16,26 +16,26 @@ const  ApiRepository = {
       })
 
     },
-    signup: (firstName,lastName,email,username,profilePic)=>{
+    signup: (firstName,lastName,username,email,password)=>{
       const data = {
         firstName:firstName,
         lastName:lastName,
         email:email,
         username:username,
-        profilePic:profilePic};
-      axios
-        .post(endPoint+'/users/signup',data)
-        .then(res=> {
+        profilePic:"",
+        password:password
+      };
+      return new Promise((resolve, reject)=>{
 
+        axios
+          .post(endPoint+'/users/signup',data)
+          .then(res=> {
+            resolve(res)
+          })
+          .catch(err=>reject(err))
 
-        })
-        .catch(err=>err)
-
+      })
     },
-
-
-
-
 
 
 };

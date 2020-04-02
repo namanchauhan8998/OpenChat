@@ -14,7 +14,7 @@ const routes = [
     children: [
       { path: '/', component: () => import('pages/Dashboard/Index.vue') },
       { path: '/settings', component: () => import('pages/Dashboard/Settings.vue') },
-
+      {path: '/whatsapp', component:()=>import('pages/Dashboard/whatsAppChat')},
     ]
   }
 ]

@@ -1,49 +1,100 @@
 <template>
-  <q-page  class="bg-grey-4 q-pt-xl">
+  <q-page  class="bg-grey-4 ">
     <div class=" row justify-center " style="" >
-      <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 bg-white">
-        <div class="col-xs-12 col-sm-12 col-md-4 col-xl-4 absolute-center">
-          <q-form
-            @submit="onSubmit"
-            @reset="onReset"
-            class="q-gutter-md"
-          >
-            <q-input
-              v-for="detail in newAccount" v-bind:key="detail"
-              filled
-              rounded
-              v-model="detail.firstName"
-              :label="detail.lable"
-              :hint="detail.hint"
-              lazy-rules
-              :rules="[ val => val && val.length > 0 || 'Please type something']"
-            />
-            <q-toggle v-model="accept" label="I accept the license and terms" />
+          <div class="self-center q-my-md">
+            <q-form
+              @submit="onSubmit"
+              class="q-gutter-md"
+            >
+<!--              <q-input-->
+<!--                v-for="(detail,index) in newAccount" :key="detail.title+index"-->
+<!--                filled-->
+<!--                rounded-->
+<!--                v-model="detail.val"-->
+<!--                :label="detail.lable"-->
+<!--                :hint="detail.hint"-->
+<!--                lazy-rules-->
+<!--                :rules="[ val => val && val.length > 0 || 'Please type something']"-->
+<!--              />-->
+              <q-input
+                filled
+                rounded
+                v-model="firstName"
+                label="First Name"
+                hint="First Name"
+                lazy-rules
+                :rules="[ val => val && val.length > 0 || 'Please type something']"
+              />
+              <q-input
+                filled
+                rounded
+                v-model="lastName"
+                label="Last Name"
+                hint="Last Name"
+                lazy-rules
+                :rules="[ val => val && val.length > 0 || 'Please type something']"
+              />
+              <q-input
+                filled
+                rounded
+                v-model="userName"
+                label="User Name"
+                hint="User Name"
+                lazy-rules
+                :rules="[ val => val && val.length > 0 || 'Please type something']"
+              />
+              <q-input
+                filled
+                rounded
+                v-model="email"
+                label="Email Id"
+                hint="Email Id"
+                lazy-rules
+                :rules="[ val => val && val.length > 0 || 'Please type something']"
+              />
+              <q-input
+                filled
+                rounded
+                v-model="password"
+                label="Password"
+                hint="Password"
+                lazy-rules
+                :rules="[ val => val && val.length > 0 || 'Please type something']"
+              />
+              <q-toggle v-model="accept" label="I accept the license and terms" />
 
-            <div>
-              <q-btn label="Submit" type="submit" color="primary" />
-              <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
-            </div>
-          </q-form>
-        </div>
-      </div>
+              <div>
+                <q-btn label="Submit" type="submit" color="primary" />
+                <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
+              </div>
+            </q-form>
+          </div>
+      <p>{{url}}</p>
     </div>
   </q-page>
 </template>
 <script>
 
+  import ApiRepository from "../../Repository/repository";
+
   export default {
     data () {
       return {
-        newAccount:[
-          {firstName:'',lable:'First Name',hint:'First Name'},
-          {lastName: '',lable:'Last Name ',hint:'Last Name'},
-          {username:'',lable:'User Name',hint:'User Name'},
-          {email:'',lable:'Email Id ',hint:'Email Id'},
-          {password:'',lable:'Password',hint:'Password'},
-        ],
+        // newAccount:[
+        //   {val:'',  title:'firstName',    lable:'First Name',hint:'First Name'},
+        //   {val:'',  title:'LastName',     lable:'Last Name ',hint:'Last Name'},
+        //   {val:'',  title:'userName',     lable:'User Name',hint:'User Name'},
+        //   {val:'',  title:'email',        lable:'Email Id ',hint:'Email Id'},
+        //   {val:'',  title:'password',     lable:'Password',hint:'Password'},
+        // ],
+        firstName:'',
+        lastName:'',
+        userName:'',
+        email:'',
+        password:'',
       passed:false,
       accept: false,
+        url:''
 
       }
     },
@@ -62,38 +113,23 @@
         return { minHeight: offset ? `calc(100vh - ${offset}px)` : '100vh' }
       },
       onSubmit:function () {
-        let vm=this;
-        let body = {
-          FirstName: vm.newAccount.firstName,
-          LastName: vm.newAccount.LastName,
-          email: vm.newAccount.email,
-          password: vm.newAccount.password
-        };
+        let vm = this;
 
-        this.$axios({
-          method: 'post',
-          url: 'https://boardinf.herokuapp.com/users/signup',
-          data: body
-        }).then(value => {
-          vm.passed=true;
-          vm.$router.push('')
-          this.$q.dialog({
-              title: 'Success',
-              message: 'Your Account was Successfully Created',
-            }
+        // vm.newAccount.map((input)=>{
+        //     vm.url+=input.val+','
+        //
+        // })
+        // console.log(vm.url)
+        ApiRepository
+        // vm.firstName,vm.lastName,vm.email,vm.username,vm.password
 
-          )
+          .signup(vm.firstName,vm.lastName,vm.userName,vm.email,vm.password)
+          .then(res=>{
+                console.log(res.data)
+          }).catch(err=>{console.log(err)});
 
-        }).catch((err)=>{
 
-          this.$q.dialog({
-            title: 'Error',
-            message: 'Account already exists'
-
-          })
-        })
       }
     }
-
   }
 </script>

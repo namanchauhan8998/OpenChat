@@ -15,8 +15,8 @@
       <q-btn label="Go Back" color="primary" to="/"/>
 
     </div>
-    <q-layout v-else view="hHh lpR fFf">
 
+    <q-layout v-else view="hHh lpR fFf">
 
       <q-drawer
         v-model="drawer"

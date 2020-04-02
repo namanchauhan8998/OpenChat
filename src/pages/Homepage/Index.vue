@@ -51,7 +51,7 @@
 </script>
 <style>
 .bg{
-  background-image: linear-gradient(to bottom right,#1976D2, #FFFDE4);
+  /*background-image: linear-gradient(to bottom right,#1976D2, #FFFDE4);*/
 }
 .bg-card{
   min-height: 80%; border-radius: 18px;

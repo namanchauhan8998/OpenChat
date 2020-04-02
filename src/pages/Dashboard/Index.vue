@@ -5,7 +5,7 @@
     <q-list bordered class="rounded-borders " >
       <q-item-label header>All Groups</q-item-label>
 
-      <q-item class="q-py-lg" v-for="(group,index) in groups">
+      <q-item clickable class="q-py-lg" v-for="(group,index) in groups" :to="'/whatsapp'">
         <q-item-section avatar top>
           <q-avatar  color="primary" text-color="white">
             <div v-if="group.image===''">{{group.title.substring(0,1)}}</div>
@@ -20,6 +20,7 @@
           </q-item-label>
           <q-item-label caption lines="1">
             add group description in the group model in database
+            {{group.id}}
           </q-item-label>
         </q-item-section>
 
@@ -77,6 +78,7 @@
               console.log("response is ",res)
               this.groups = res.data.groups
             }
+
         })
       },
       addGroupDialog(){
@@ -118,6 +120,7 @@
       }
     },
     props: {
+
       myProps: {}
     },
 
