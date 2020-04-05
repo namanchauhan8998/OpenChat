@@ -1,5 +1,5 @@
 <template>
-  <q-page class="bg" :style-fn="myTweak" >
+  <q-page class="bg" :style-fn="myTweak" style="background-color: #100E17" >
     <div class="row justify-center" >
       <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10  shadow-23 absolute-center bg-card">
         <div class="row justify-center">

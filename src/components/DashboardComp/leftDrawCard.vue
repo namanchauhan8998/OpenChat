@@ -1,17 +1,5 @@
 <template>
-<!--  <q-card class="my-card shadow-15 full-width"  v-ripple style="border-radius: 19px; background-color: #0559FD">-->
-<!--  <q-card-section horizontal>-->
-<!--    <q-card-section class="col-3 ">-->
-<!--    <circle-image :imgurl="imgurl"></circle-image>-->
-<!--    </q-card-section>-->
-<!--    <q-card-section class=" col-9">-->
-<!--      <div class="text-overline text-white">{{name}}</div>-->
-<!--      <div class="text ellipsis text-white">{{text}}</div>-->
-<!--      <div class="text-caption text-grey">-->
-<!--      </div>-->
-<!--    </q-card-section>-->
-<!--  </q-card-section>-->
-<!--  </q-card>-->
+
   <q-item clickable v-ripple clickable class="shadow-23 full-width" style="background-color: #0559FD;border-radius: 20px 0 20px 0; ">
     <q-item-section side>
       <q-avatar rounded size="48px">

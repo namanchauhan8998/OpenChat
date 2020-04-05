@@ -15,6 +15,7 @@ const routes = [
       { path: '/', component: () => import('pages/Dashboard/Index.vue') },
       { path: '/settings', component: () => import('pages/Dashboard/Settings.vue') },
       {path: '/whatsapp', component:()=>import('pages/Dashboard/whatsAppChat')},
+      {path: '/profile', component:()=>import('pages/Dashboard/Profile')},
     ]
   }
 ]

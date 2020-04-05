@@ -20,17 +20,17 @@ const  ApiRepository = {
       const data = {
         firstName:firstName,
         lastName:lastName,
-        email:email,
         username:username,
-        profilePic:"",
-        password:password
+        email:email,
+        password:password,
+        profilePic:""
       };
       return new Promise((resolve, reject)=>{
 
         axios
           .post(endPoint+'/users/signup',data)
           .then(res=> {
-            resolve(res)
+            resolve(res);
           })
           .catch(err=>reject(err))
 

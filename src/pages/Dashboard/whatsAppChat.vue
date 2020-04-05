@@ -17,7 +17,7 @@
                         name=""
                         avatar="https://cdn.quasar.dev/img/avatar3.jpg"
                         stamp="7 minutes ago"
-                        :text="['Hey there!']"
+                        :text=[sentMessage]
                         sent
                         text-color="white"
                         bg-color="primary"
@@ -44,7 +44,10 @@
     },
     methods:{
       sendMessage(){
-        this.sentVal=true
+        if(this.sentMessage!=null){
+          this.sentVal=true
+        }
+
       }
     },
     created() {

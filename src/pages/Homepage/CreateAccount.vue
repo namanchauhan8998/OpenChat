@@ -126,7 +126,13 @@
           .signup(vm.firstName,vm.lastName,vm.userName,vm.email,vm.password)
           .then(res=>{
                 console.log(res.data)
-          }).catch(err=>{console.log(err)});
+          }).catch(err=>{
+            console.log(err)
+            this.$q.dialog({
+              title:"OPPS",
+              message:"I am hungry"
+            })
+          });
 
 
       }
