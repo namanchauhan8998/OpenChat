@@ -6,30 +6,18 @@
           <q-img :src="coverImg" class="coverImg col-12" style="max-height: 400px">
             <div class="absolute-bottom text-subtitle1 text-center row">
                 <q-img :src="iconImg" class="coverImg col-4" style="border-radius: 50%;max-height: 140px; max-width: 140px"/>
-              <div class="col-8">
+              <div class="col-5">
                     <h4>{{name}}</h4>
               </div>
+              <q-btn class="col-2 absolute-right" label="Edit Image">
+                <q-separator></q-separator>
+                <q-icon name="edit"></q-icon>
+              </q-btn>
             </div>
           </q-img>
         </q-item>
-<!--        <q-item class="row justify-center">-->
-<!--            <q-btn-group  class="text-black" >-->
-<!--              <q-btn push label="TimeLine" >-->
-<!--                <q-icon name="timeline"></q-icon>-->
-<!--              </q-btn>-->
-<!--              <q-btn push label="About" >-->
-<!--                <q-icon name="user"></q-icon>-->
-<!--              </q-btn>-->
-<!--              <q-btn push label="Photos" >-->
-<!--              <q-icon name="photo"></q-icon>-->
-<!--            </q-btn>-->
-<!--            </q-btn-group>-->
-<!--        </q-item>-->
       </q-card>
-
-        <profile-nav></profile-nav>
-
-
+        <profile-nav :name="name" :icon-img="iconImg"></profile-nav>
     </q-list>
   </q-page>
 </template>

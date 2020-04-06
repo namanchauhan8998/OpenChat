@@ -52,6 +52,7 @@
           .then(res=>{
             if(res.status===200){
               localStorage.setItem('token',res.data.token);
+
               vm.$router.push('/home')
             }
             else {throw new Error('do something with cases in login');}

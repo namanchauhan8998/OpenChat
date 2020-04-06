@@ -23,7 +23,7 @@
         show-if-above
         :mini="true"
 
-        content-class="bg-primary text-white  rounded-drawer"
+        content-class=" text-white  rounded-drawer"
       >
         <q-scroll-area class="fit" >
           <q-list >
@@ -119,6 +119,7 @@
 <style lang="scss">
   .rounded-drawer{
     border-radius: 0 0 18px 0;
+    background-color: #100E17;
   }
   .some-class{
     color:blue;
