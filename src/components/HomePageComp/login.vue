@@ -1,5 +1,6 @@
 <template>
   <div class="row justify-center">
+    <div class="text-white">{{error}}</div>
     <q-card bordered class="col-xs-11 col-sm-11 col-md-8 col-lg-6 shadow-20 self-center bg-grey-2 "   style="min-width:40%;border-radius: 15px; color: #ff" >
       <q-card-section>
         <div class="col-10">
@@ -40,7 +41,8 @@
         email:'',
         password:'',
         color:'#eeeeee',
-        to:''
+        to:'',
+
 
       }
     },
@@ -59,7 +61,6 @@
             console.log(res)
           })
           .catch(err=>{
-            console.log(err)
             this.$q.dialog({
               title: 'Help Us Help You ',
               message: 'We might require something more than that to log you in...'

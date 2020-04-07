@@ -40,6 +40,7 @@
       return{
         sentVal:false,
         sentMessage:'',
+        messages:[]
       }
     },
     methods:{
@@ -51,8 +52,37 @@
       }
     },
     created() {
-      let vm=this;
+    //   let vm=this;
+    //   this.myProps.emit('groups/id/chats/')
+    //   this.myProps.on('message',(messages)=>{
+    //     this.messages = messages
+    //     {
+    //       sent=true;
+    //     }else{
+    //       messes=messages;
+    //     }
+    //
+    //   })
+// have to send id of group in emit
 
+      // group/join  id:
+      // {
+      //   length:30,
+      //   messages:[
+      //   {
+      //     contentType:'text/plain',
+      //     content:'asmdalskdmlaskmd',
+      //     user:{
+      //       id:1,
+      //       firstName:'Namana'
+      //       lastName:'Namana'
+      //       username:' '
+      //       profilePic:''
+      //     }
+      //   }
+      // ]
+      // }
+      console.log(this.myProps.id);
 
 
     },

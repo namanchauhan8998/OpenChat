@@ -114,20 +114,25 @@
       },
       onSubmit:function () {
         let vm = this;
-
+        let foo = {};
+        newAccount.map(element=>{
+          foo[element.title] = element.val;
+        });
         // vm.newAccount.map((input)=>{
         //     vm.url+=input.val+','
         //
         // })
         // console.log(vm.url)
+        let object = this.data.val;
+
         ApiRepository
         // vm.firstName,vm.lastName,vm.email,vm.username,vm.password
-
+          ('Arjun','bhd','')
           .signup(vm.firstName,vm.lastName,vm.userName,vm.email,vm.password)
           .then(res=>{
                 console.log(res.data)
           }).catch(err=>{
-            console.log(err)
+            console.log('dkjasbkdjhlashl'+err.status)
             this.$q.dialog({
               title:"OPPS",
               message:"I am hungry"

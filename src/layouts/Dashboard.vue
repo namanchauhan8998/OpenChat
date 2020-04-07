@@ -68,7 +68,7 @@
         token:null,
         drawerItems:[
           {title:'Home',icon:'home',to:'/home',callback:false},
-          {title:'Messages',icon:'message',to:'/message',callback:false},
+          {title:'Messages',icon:'message',to:'/message-area',callback:false},
           {title:'Profile',icon:'account_circle',to:'/profile',callback:false},
           {title:'Settings',icon:'settings',to:'/settings',callback:false},
           {title:'logout',icon:'exit_to_app',callback:this.logout}

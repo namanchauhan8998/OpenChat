@@ -5,32 +5,32 @@
     <q-list bordered class="rounded-borders " >
       <q-item-label header>All Groups</q-item-label>
 <!-- @click="goToGroup(group)"-->
-      <q-item clickable class="q-py-lg" v-for="(group,index) in groups" @click="goToGroup">
-        <q-item-section avatar top>
-          <q-avatar  color="primary" text-color="white">
+      <q-card clickable class="q-my-md shadow-23 row " v-for="(group,index) in groups" @click="goToGroup" style="background:linear-gradient(to right,#141E30,#243B55)">
+
+        <q-card-section  class=" col-1">
+          <q-avatar  color="white" text-color="black">
             <div v-if="group.image===''">{{group.title.substring(0,1)}}</div>
             <img v-else src="https://cdn.quasar.dev/img/avatar.png">
           </q-avatar>
-        </q-item-section>
+        </q-card-section>
 
-        <q-item-section top>
-          <q-item-label lines="1">
-            <span class="text-weight-medium">{{group.title}}</span>
-            <span class="text-grey-8"> - {{group.createdBy}}</span>
-          </q-item-label>
-          <q-item-label caption lines="1">
-            add group description in the group model in database
-            {{group.id}}
-          </q-item-label>
-        </q-item-section>
+        <q-card-section top class=" col-10">
+          <q-card-label lines="1">
+            <span class="text-weight-bold text-white ">{{group.title}}</span>
+            <span class="text-white ellipsis"> - {{group.createdBy}}</span>
+          </q-card-label>
+          <q-card-label caption lines="1">
+           <p class="text-white ellipsis"> add group description in the group model in database</p>
+          </q-card-label>
+        </q-card-section>
 
-        <q-item-section top side>
+        <q-card-section top side class="col-1">
           <div class="text-grey-8 q-gutter-xs">
             <q-btn class="gt-xs" size="12px" flat dense round icon="delete" />
             <q-btn size="12px" flat dense round icon="more_vert" />
           </div>
-        </q-item-section>
-      </q-item>
+        </q-card-section>
+      </q-card>
 
       <q-separator v-if="index>0" spaced />
 
@@ -72,15 +72,15 @@
         return {minHeight: offset ? `calc(100vh - ${offset}px)` : '100vh',}
       },
       goToGroup(group){
-          this.clicked=group.id;
-        //   this.myProps.emit('groups/id/chats/')
+        //   this.clicked=group.id;
+        //
         //   this.on('groups/'+this.clicked+'/allchats/',(res)=>{
         //     if(res.status===2000){
         //       console.log("response is ",res)
         //       this.$router.push('/whatsapp')
         //     }
         // })
-          this.$router.push('/whatsapp')
+          this.$router.push('/message-area')
 
         },
       allGroups(){

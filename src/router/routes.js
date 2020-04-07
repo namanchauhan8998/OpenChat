@@ -16,6 +16,7 @@ const routes = [
       { path: '/settings', component: () => import('pages/Dashboard/Settings.vue') },
       {path: '/whatsapp', component:()=>import('pages/Dashboard/whatsAppChat')},
       {path: '/profile', component:()=>import('pages/Dashboard/Profile')},
+      {path: '/message-area', component:()=>import('pages/Dashboard/MessageArea')},
     ]
   }
 ]
