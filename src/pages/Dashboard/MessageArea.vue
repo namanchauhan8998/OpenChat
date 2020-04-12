@@ -4,9 +4,11 @@
   <q-card class="col-10 bg-grey-2" style="margin-top: 20px">
   <q-card-section>
     <div class="row">
-      <q-scroll-area class="col-12" style="height:80vh" :onload="onLoad">
+      <q-scroll-area class="col-12" style="height:80vh" :onload="onLoad"
+      visible
+      >
         <div class="q-pa-md row text-black">
-          <q-infinite-scroll  reverse class="col-12">
+          <q-infinite-scroll  reverse class="col-12" >
             <template slot="loading">
               <div class="row justify-center q-my-md">
                 <q-spinner color="primary" name="dots" size="40px" />
@@ -19,8 +21,8 @@
                             stamp="7 minutes ago"
                             :text=[mes.message]
                             :sent="mes.sent"
-                            text-color="white"
-                            bg-color="primary"
+                            text-color="black"
+                            bg-color="secondary"
             >
             </q-chat-message>
           </q-infinite-scroll>
@@ -70,8 +72,8 @@
       let socket=io.connect('http://localhost:3001');
       this.mysocket=socket;
       console.log("before",socket.id)
-      var tokenid = localStorage.getItem('token');
-      var decoded=jwt_decode(tokenid);
+      var toked = localStorage.getItem('token');
+      var decoded=jwt_decode(toked);
       console.log(decoded)
       this.Details=decoded;
       this.handle=this.Details.username;
