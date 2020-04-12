@@ -1,32 +1,44 @@
 <template>
-
-  <q-page>
-    <div class="messagePrint row">
-      <q-list style="width: 100%;">
-        <!-- <q-spinner-dots size="2rem" />-->
-        <p>socket id ={{sokid}}</p>
-        <q-chat-message v-for="mes in object"
-                        :key="mes.name"
-                        :name=[mes.name]
-                        avatar="https://cdn.quasar.dev/img/avatar4.jpg"
-                        stamp="7 minutes ago"
-                        :text=[mes.message]
-                        :sent="mes.sent"
-                        text-color="white"
-                        bg-color="primary"
-        >
-        </q-chat-message>
-
-      </q-list>
+  <q-page :style-fn="myTweak">
+ <div class="row  flex flex-center">
+  <q-card class="col-10 bg-grey-2" style="margin-top: 20px">
+  <q-card-section>
+    <div class="row">
+      <q-scroll-area class="col-12" style="height:80vh" :onload="onLoad">
+        <div class="q-pa-md row text-black">
+          <q-infinite-scroll  reverse class="col-12">
+            <template slot="loading">
+              <div class="row justify-center q-my-md">
+                <q-spinner color="primary" name="dots" size="40px" />
+              </div>
+            </template>
+            <q-chat-message v-for="(mes,index) in object"
+                            :key="mes.name"
+                            :name=[mes.name]
+                            avatar="https://cdn.quasar.dev/img/avatar4.jpg"
+                            stamp="7 minutes ago"
+                            :text=[mes.message]
+                            :sent="mes.sent"
+                            text-color="white"
+                            bg-color="primary"
+            >
+            </q-chat-message>
+          </q-infinite-scroll>
+        </div>
+      </q-scroll-area>
+      <div class="col-12">
+        <q-toolbar class=" text-black row">
+          <q-btn round flat icon="insert_emoticon" class="q-mr-sm" />
+          <q-input rounded outlined dense class="WAL__field col-grow q-mr-sm" bg-color="white" v-model="message" placeholder="Type a message" />
+          <q-btn round flat icon="send" color="black" @click="sendMsg"/>
+        </q-toolbar>
+      </div>
     </div>
-    <div class="absolute-bottom row">
+  </q-card-section>
+</q-card>
+ </div>
 
-      <q-input dense v-model="handle" label="Name" rounded bg-color="grey-2" class="col-3"></q-input>
-      <q-input dense v-model="message" label="Type Here" rounded bg-color="grey-2" class="col-10"></q-input>
-      <q-btn @click="sendMsg" class="col-2" rounded label="SEND" ripple="true" ></q-btn>
-    </div>
   </q-page>
-
 </template>
 
 <style scoped>
@@ -37,6 +49,7 @@
 <script>
 
   import io from "socket.io-client";
+  import jwt_decode from "jwt-decode";
   export default {
     name:"Index",
     data(){
@@ -47,7 +60,8 @@
         isconnected:false,
         object:[],
         sokid:'',
-        sentCheck:false
+        sentCheck:false,
+        Details:[]
 
       }
     },
@@ -56,9 +70,15 @@
       let socket=io.connect('http://localhost:3001');
       this.mysocket=socket;
       console.log("before",socket.id)
+      var tokenid = localStorage.getItem('token');
+      var decoded=jwt_decode(tokenid);
+      console.log(decoded)
+      this.Details=decoded;
+      this.handle=this.Details.username;
 
       socket.on('connect',()=>{
         vm.sokid=socket.id;
+
         console.log("before",socket.id)
 
       });
@@ -79,6 +99,13 @@
     },
 
     methods:{
+      onLoad (index, done) {
+          if (this.object.length>7) {
+            this.object.splice(0, 0, {},{},{},{},{},{})
+            done()
+          }
+      },
+
       myTweak(offset) {
         return {minHeight: offset ? `calc(100vh - ${offset}px)` : '100vh',}
       },

@@ -1,4 +1,5 @@
 <template>
+  <div>
       <q-card>
         <q-tabs
          v-model="tab"
@@ -52,18 +53,20 @@
           </q-tab-panel>
         </q-tab-panels>
       </q-card>
-
+  </div>
 </template>
 <script>
   export default {
     data () {
       return {
-        tab: 'about'
+        tab: 'about',
+
       }
     },
     props:{
       name:'',
-      iconImg:''
+      iconImg:'',
+
 
     }
   }

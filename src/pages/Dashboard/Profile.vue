@@ -1,29 +1,27 @@
 <template>
-  <q-page>
-    <q-list bordered dark class="q-gutter-y-lg">
-      <q-card bordered square>
-        <q-item class="CoverSection">
-          <q-img :src="coverImg" class="coverImg col-12" style="max-height: 400px">
-            <div class="absolute-bottom text-subtitle1 text-center row">
-                <q-img :src="iconImg" class="coverImg col-4" style="border-radius: 50%;max-height: 140px; max-width: 140px"/>
-              <div class="col-5">
-                    <h4>{{name}}</h4>
-              </div>
-              <q-btn class="col-2 absolute-right" label="Edit Image">
-                <q-separator></q-separator>
-                <q-icon name="edit"></q-icon>
-              </q-btn>
-            </div>
-          </q-img>
-        </q-item>
+  <q-page :style-fn="myTweak">
+    <q-list bordered dark class="q-gutter-y-lg text-black q-scrollarea">
+    <q-card>
+      <q-card-section>
+        <h4 class="text-black text-weight-bold">Profile</h4>
+      </q-card-section>
+    </q-card>
+      <q-card square class="bg-grey-3">
+        <q-item-section class="row flex-center flex">
+          <q-img :src="coverImg" class="coverImg col-12 self-center shadow-23" style="width: 300px;height: 300px; border-radius: 50%"/>
+        </q-item-section>
+        <q-card-section class="flex flex-center">
+          <h4 class="self-center text-weight-bolder101">{{profileData.username}}</h4>
+        </q-card-section>
       </q-card>
-        <profile-nav :name="name" :icon-img="iconImg"></profile-nav>
+        <profile-nav :name="profileData.username" :icon-img="iconImg"></profile-nav>
     </q-list>
   </q-page>
 </template>
 
 <script>
   import ProfileNav from "../../components/DashboardComp/ProfileNav";
+  import jwt_decode from "jwt-decode"
   export default {
     name: "Profile",
     components: {ProfileNav},
@@ -31,9 +29,24 @@
       return{
         coverImg:'https://placeimg.com/500/300/nature',
         iconImg:'https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
-        name:'Naman Singhsada'
-
+        name:'Naman Singhsada',
+        profileData:[]
       }
+
+    },
+    props: {
+      myProps: {},
+    },
+    created() {
+      var cat = localStorage.getItem('token');
+      var decoded=jwt_decode(cat);
+      console.log(decoded)
+      this.profileData=decoded;
+    },
+    methods:{
+      myTweak(offset) {
+        return {minHeight: offset ? `calc(100vh - ${offset}px)` : '100vh',}
+      },
     }
   }
 </script>
